@@ -16,4 +16,45 @@ class Device(object):
         self._deviceA = Device()
         #@listaDeGrupos
         self._groups = []
+
+    def get_id(self):
+        return self.__id
+
+
+    def get_user_agent(self):
+        return self.__user_agent
+
+
+    def get_fallback(self):
+        return self.__fallback
+
+
+    def get_device_a(self):
+        return self.__deviceA
+
+
+    def get_groups(self):
+        return self.__groups
+
+
+    def set_id(self, value):
+        self.__id = value
+
+
+    def set_user_agent(self, value):
+        self.__user_agent = value
+
+
+    def set_fallback(self, value):
+        self.__fallback = value
+
+
+    def set_device_a(self, value):
+        self.__deviceA = value
+
+
+    def set_groups(self, value):
+        self.__groups = value
+        
+    
         
