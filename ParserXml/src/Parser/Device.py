@@ -4,7 +4,7 @@ Created on 09/02/2014
 @author: Jimmy
 '''
 
-import Group
+
 
 class Device:
     
@@ -13,9 +13,9 @@ class Device:
         self.___user_agent = ""
         self.___fallback = ""
         #@DispositivoAsociado
-        #self._deviceA = Device.Device()
+        #self._deviceA = Device()
         #@listaDeGrupos
-        self._groups = []
+        self.__groups = []
 
     def get_id(self):
         return self.__id
@@ -29,8 +29,8 @@ class Device:
         return self.__fallback
 
 
-    def get_device_a(self):
-        return self.__deviceA
+    #def get_device_a(self):
+    #    return self.__deviceA
 
 
     def get_groups(self):
@@ -49,12 +49,12 @@ class Device:
         self.__fallback = value
 
 
-    def set_device_a(self, value):
-        self.__deviceA = value
+    #def set_device_a(self, value):
+     #   self.__deviceA = value
 
 
     def set_groups(self, value):
-        self.__groups = value
+        self.__groups.append(value)
         
     
         
