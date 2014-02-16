@@ -6,14 +6,14 @@ Created on 09/02/2014
 
 import Group
 
-class Device(object):
+class Device:
     
     def __init__(self):
-        self.___id = str
-        self.___user_agent = str
-        self.___fallback = str
+        self.___id = ""
+        self.___user_agent = ""
+        self.___fallback = ""
         #@DispositivoAsociado
-        self._deviceA = Device()
+        #self._deviceA = Device.Device()
         #@listaDeGrupos
         self._groups = []
 
