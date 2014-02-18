@@ -1,6 +1,7 @@
 from Parser import Device
 from Parser import Group
 
+
 def searchDevices(line):
     return line.find('<devices>')
 def searchEndDevices(line):
@@ -47,10 +48,31 @@ def extractGroupAtt(line,device):
     group.set_device(device)
     device.set_groups(group)
     
+#Obtiene el capability de cada tag <capability=#
+def searchCapability(line):
+    start=line.rfind('<capability ')+12
+    end=line.rfind('/>')
+    return line[start:end]
+    
+    
+def extractNameCapability(line,capability):
+    start=line.rfind('name="')+6
+    end=line.rfind('" value="')
+    capability.set_name(line[start:end])
+    
+def extractValueCapability(line,capability):
+    start=line.rfind('value="')+7
+    end=line.rfind('"')
+    capability.set_value(line[start:end])
+
+def addCapabilities(group,capability):
+    group.add_capabilities(capability)
+#final de linea que busca y agrega capabilities#
 def readXml(devices):
     inTagGroup=False
     inDevicesContent=False
     inTagDevice=False
+    inTagCapability=False
     xmlFile=open('prueba.xml','r')
     line=xmlFile.readline()
     while line!="":
@@ -75,7 +97,7 @@ def readXml(devices):
                     if searchEndGroup(line)!=-1:
                         inTagGroup=False
                 if searchEndDevice(line)!=-1:
-                    #Al encontrar tag de cierre device se añade el dispositivo con todos sus atributos a la lista enviada por parametro
+                    
                     devices.append(device)
                     inTagDevice=False
             if searchEndDevices(line)!=-1:
