@@ -1,5 +1,6 @@
 from Parser import Device
 from Parser import Group
+from Parser import Capability
 
 
 def searchDevices(line):
@@ -50,10 +51,13 @@ def extractGroupAtt(line,device):
     
 #Obtiene el capability de cada tag <capability=#
 def searchCapability(line):
-    start=line.rfind('<capability ')+12
-    end=line.rfind('/>')
-    return line[start:end]
-    
+    #start=line.rfind('<capability ')+12
+    #end=line.rfind('/>')
+    #return line[start:end]
+    return line.find("<capability ")
+
+def searchEndCapability(line):
+    return line.find("/>")
     
 def extractNameCapability(line,capability):
     start=line.rfind('name="')+6
@@ -62,7 +66,7 @@ def extractNameCapability(line,capability):
     
 def extractValueCapability(line,capability):
     start=line.rfind('value="')+7
-    end=line.rfind('"')
+    end=line.rfind('"/')
     capability.set_value(line[start:end])
 
 def addCapabilities(group,capability):
@@ -72,7 +76,6 @@ def readXml(devices):
     inTagGroup=False
     inDevicesContent=False
     inTagDevice=False
-    inTagCapability=False
     xmlFile=open('prueba.xml','r')
     line=xmlFile.readline()
     while line!="":
@@ -92,12 +95,16 @@ def readXml(devices):
                 if not(inTagGroup):
                     if searchGroup(line)!=-1:
                         inTagGroup=True
-                        extractGroupAtt(line,device)
+                        extractGroupAtt(line,device)                                              
                 else:
+                    if searchCapability(line)!=-1:
+                                capability=Capability.Capability();
+                                extractNameCapability(line, capability)
+                                extractValueCapability(line, capability)
+                                addCapabilities(device.get_groups()[-1],capability)                   
                     if searchEndGroup(line)!=-1:
                         inTagGroup=False
-                if searchEndDevice(line)!=-1:
-                    
+                if searchEndDevice(line)!=-1:                    
                     devices.append(device)
                     inTagDevice=False
             if searchEndDevices(line)!=-1:
