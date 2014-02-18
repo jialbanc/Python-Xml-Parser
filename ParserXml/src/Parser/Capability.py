@@ -5,6 +5,7 @@ Created on 09/02/2014
 '''
 import Group
 
+
 class Capability:
     
 

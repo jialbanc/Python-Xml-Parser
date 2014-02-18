@@ -50,11 +50,12 @@ class Device:
 
 
     #def set_device_a(self, value):
-     #   self.__deviceA = value
+    #   self.__deviceA = value
 
 
     def set_groups(self, value):
         self.__groups.append(value)
         
+    
     
         
