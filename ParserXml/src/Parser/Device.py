@@ -12,6 +12,7 @@ class Device:
         self.___id = ""
         self.___user_agent = ""
         self.___fallback = ""
+        self.___actual_device_root=""
         #@DispositivoAsociado
         #self._deviceA = Device()
         #@listaDeGrupos
@@ -56,6 +57,11 @@ class Device:
     def set_groups(self, value):
         self.__groups.append(value)
         
+    def set_actual_device_root(self,value):
+        self.___actual_device_root=value
+    
+    def get_actual_device_root(self):
+        return self.___actual_device_root
     
     
         

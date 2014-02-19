@@ -71,7 +71,7 @@
 
   </version>
   <devices>
-  <device id="generic" user_agent="" fall_back="root">
+  <device id="generic" user_agent="" fall_back="root" actual_device_root="true">
     <group id="product_info">
       <capability name="mobile_browser" value=""/>
       <capability name="nokia_feature_pack" value="0"/>

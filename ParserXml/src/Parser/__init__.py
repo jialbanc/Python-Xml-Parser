@@ -39,10 +39,20 @@ def extractDeviceFallB(line):
         end=line.rfind('" ')
     return line[start:end]
 
+def extract_actualDevice(line):
+    if line.rfind('actual_device_root')!=-1:
+        start=line.rfind('actual_device_root="')+20
+        end=line.rfind('">')
+        return line[start:end]
+    else:
+        return ''
+        
+
 def extractDeviceAtt(line,device):
     device.set_id(extractDeviceId(line))
     device.set_user_agent(extractDeviceUserA(line))
     device.set_fallback(extractDeviceFallB(line))
+    device.set_actual_device_root(extract_actualDevice(line))
     
 def extractGroupAtt(line,device):
     group=Group.Group()
