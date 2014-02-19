@@ -3,7 +3,7 @@ Created on 09/02/2014
 
 @author: Jimmy
 '''
-import Group
+
 
 
 class Capability:

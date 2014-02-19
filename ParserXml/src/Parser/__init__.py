@@ -85,11 +85,21 @@ def extractValueCapability(line,capability):
 def addCapabilities(group,capability):
     group.add_capabilities(capability)
 #final de linea que busca y agrega capabilities#
+
+def addHeriarchyGroups(devices):
+    for i in devices:
+        for j in devices:
+            if i.get_id()==j.get_fallback():
+                j.get_groups().extend(i.get_groups())
+            
+            
+
+
 def readXml(devices):
     inTagGroup=False
     inDevicesContent=False
     inTagDevice=False
-    xmlFile=open('prueba.xml','r')
+    xmlFile=open('wurfl-2.3.xml','r')
     line=xmlFile.readline()
     while line!="":
         #print line
@@ -128,6 +138,7 @@ def readXml(devices):
 if __name__ == "__main__":
     devices=[]
     readXml(devices)
+    addHeriarchyGroups(devices)
     print "hola"
     
     
