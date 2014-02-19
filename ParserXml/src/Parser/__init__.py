@@ -91,6 +91,7 @@ def addHeriarchyGroups(devices):
         for j in devices:
             if i.get_id()==j.get_fallback():
                 j.get_groups().extend(i.get_groups())
+                print j.get_fallback()
             
             
 
