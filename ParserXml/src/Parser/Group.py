@@ -4,8 +4,9 @@ Created on 09/02/2014
 @author: Jimmy
 '''
 
+
 from Parser import Device
-import Capability
+
 
 class Group(object):
 
@@ -38,3 +39,6 @@ class Group(object):
 
     def set_capabilitys(self, value):
         self.__capabilitys = value
+        
+    def add_capabilities(self,capability):
+        self._capabilitys.append(capability)

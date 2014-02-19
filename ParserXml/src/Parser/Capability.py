@@ -3,16 +3,17 @@ Created on 09/02/2014
 
 @author: Jimmy
 '''
-import Group
+
+
 
 class Capability:
     
 
-    def __init__(self, params):
+    def __init__(self):
         self.___name = str
         self.___value = str
         #@GrupoPerteneciente
-        self._group = Group()
+        #self._group = Group()
 
     def get_name(self):
         return self.__name
