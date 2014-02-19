@@ -34,3 +34,8 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+*.txt
+*.aux
+*.out
+*.synctex.gz
