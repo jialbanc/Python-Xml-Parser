@@ -33,7 +33,10 @@ def extractDeviceUserA(line):
 
 def extractDeviceFallB(line):
     start=line.rfind('fall_back="')+11
-    end=line.rfind('">')
+    if line.rfind('"')+1=='>':
+        end=line.rfind('">')
+    else:
+        end=line.rfind('" ')
     return line[start:end]
 
 def extractDeviceAtt(line,device):
